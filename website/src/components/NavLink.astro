@@ -1,0 +1,14 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+const { pathname } = new URL(Astro.request.url);
+---
+
+<li class="nav-li">
+  <a class={`nav-a ${pathname === href ? "nav-a-active" : ""}`} href={href}>
+    <slot />
+  </a>
+</li>
