@@ -1,12 +1,9 @@
 ---
 import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
 import Footer from "../components/Footer.astro";
 
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,11 +14,28 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>
+      {
+        frontmatter?.title
+          ? `${frontmatter.title} - Epic CSS Framework`
+          : `Epic CSS Framework`
+      }
+    </title>
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
-    <slot />
+    {
+      frontmatter?.docs ? (
+        <main class="flex grow">
+          <Sidebar />
+          <section class="content p-8 grow">
+            <slot />
+          </section>
+        </main>
+      ) : (
+        <slot />
+      )
+    }
     <Footer />
   </body>
 </html>
