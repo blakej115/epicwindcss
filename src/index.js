@@ -3,14 +3,21 @@ const plugin = require("tailwindcss/plugin"),
 
 module.exports = plugin.withOptions(
   function (options) {
-    return function ({ addBase, addComponents, addUtilities, theme }) {
-      addBase(merge(require("./base")(theme), options.styles.base));
+    return function ({
+      addBase,
+      addComponents,
+      addUtilities,
+      matchUtilities,
+      theme,
+    }) {
+      addBase(merge(require("./base")(theme), theme("epic.base")));
       addComponents(
-        merge(require("./components")(theme), options.styles.components)
+        merge(require("./components")(theme), theme("epic.components"))
       );
       addUtilities(
-        merge(require("./utilities")(theme), options.styles.utilities)
+        merge(require("./utilities")(theme), theme("epic.utilities"))
       );
+      require("./utilities/match")(theme, matchUtilities);
     };
   },
   function (options) {

@@ -32,5 +32,10 @@ module.exports = function (theme) {
         lineHeight: theme("fontSize.lg[1].lineHeight"),
       },
     },
+    ".center-children": {
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+    },
   };
 };

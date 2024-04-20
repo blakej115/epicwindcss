@@ -34,7 +34,11 @@ const { frontmatter } = Astro.props;
           </section>
         </main>
       ) : (
-        <slot />
+        <main
+          class={`container-full-md content grow gutter ${frontmatter?.center ? "center" : ""}`}
+        >
+          <slot />
+        </main>
       )
     }
     <Footer />

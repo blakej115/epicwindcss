@@ -1,11 +1,31 @@
 ---
+import SidebarParent from "./SidebarParent.astro";
 import SidebarLink from "./SidebarLink.astro";
 ---
 
-<aside class="grow bg-slate-500 max-w-[200px]">
-  <nav>
-    <ul>
-      <SidebarLink href="start">Get Started</SidebarLink>
+<aside class="sidebar">
+  <nav class="sidebar-nav">
+    <ul class="sidebar-ul">
+      <SidebarParent label="Epic">
+        <SidebarLink href="start">Get Started</SidebarLink>
+      </SidebarParent>
+      <SidebarParent label="Base">
+        <SidebarLink href="base/body">Body</SidebarLink>
+        <SidebarLink href="base/transition">Transition</SidebarLink>
+      </SidebarParent>
+      <SidebarParent label="Components">
+        <SidebarLink href="components/btns">Buttons</SidebarLink>
+        <SidebarLink href="components/center">Center</SidebarLink>
+        <SidebarLink href="components/content">Content</SidebarLink>
+        <SidebarLink href="components/sidebar">Sidebar</SidebarLink>
+        <SidebarLink href="components/navbar">Navbar</SidebarLink>
+      </SidebarParent>
+      <SidebarParent label="Utilities">
+        <SidebarLink href="utilities/container-full">
+          Full Container
+        </SidebarLink>
+        <SidebarLink href="utilities/gutter">Gutter</SidebarLink>
+      </SidebarParent>
     </ul>
   </nav>
 </aside>
